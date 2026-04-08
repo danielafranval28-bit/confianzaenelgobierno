@@ -1,0 +1,54 @@
+---
+title: "Malestar subjetivo y confianza en el gobierno en chile"
+format: html
+editor: visual
+author: Daniela Parra
+---
+
+# Malestar subjetivo y confianza en el gobierno en Chile
+
+## Introduccion:
+
+En los últimos años, la relación entre ciudadanía e instituciones políticas en Chile ha experimentado importantes transformaciones, evidenciadas en una creciente desconfianza hacia las autoridades. Este fenómeno se hizo especialmente visible a partir del [Estallido Social de 2019]{.underline}, donde amplios sectores de la población manifestaron su descontento con el funcionamiento del sistema político y económico. En esta línea, diversos estudios de opinión pública han evidenciado una disminución sostenida en los niveles de confianza hacia las instituciones políticas en Chile, especialmente en el gobierno ([Centro de Estudios Públicos]{.underline}, 2020). @centrod
+
+![](https://elintransigente.com/wp-content/uploads/2022/10/Chile-estallido-social.jpeg)
+
+Desde una perspectiva sociológica, la confianza en el gobierno, entendida como la evaluación que realizan los individuos respecto a la capacidad, legitimidad y desempeño de las autoridades políticas, constituye un elemento central para la estabilidad democrática. La disminución de esta confianza puede interpretarse como un síntoma de crisis en la relación entre el Estado y la sociedad.
+
+Por otro lado, el malestar subjetivo refiere a las percepciones y emociones negativas que los individuos experimentan respecto a su situación personal y social. Este incluye dimensiones como la insatisfacción con la vida, la percepción de injusticia y sentimientos como frustración o enojo. En contextos de alta desigualdad, estas percepciones tienden a intensificarse, afectando la forma en que las personas evalúan a las instituciones (Araujo, 2019). @araujo
+
+El problema de investigación que orienta este estudio es: **¿cómo influye el malestar subjetivo en la confianza en el gobierno en Chile?** Esta pregunta resulta relevante para la sociología, ya que permite analizar la relación entre experiencias subjetivas y estructuras institucionales, contribuyendo a la comprensión de los procesos de legitimidad política.
+
+En este estudio, la confianza en el gobierno será entendida como el nivel de confianza que los individuos declaran tener en dicha institución. Por su parte, el malestar subjetivo será operacionalizado a partir de variables como la satisfacción con la vida, la percepción de injusticia social y la presencia de emociones negativas, tales como la frustración o el enojo.
+
+En función de lo anterior, se plantea la siguiente hipótesis de investigación: se espera que, a medida que aumentan los niveles de malestar subjetivo en los individuos, disminuya su nivel de confianza en el gobierno.
+
+Para analizar esta relación, se utilizará la base de datos del [Centro de Estudios de Conflicto y Cohesión Social]{.underline}, específicamente la encuesta ELSOC 2022, la cual permite examinar dimensiones subjetivas y sociales de la población chilena.
+
+Las variables consideradas serán:
+
+**Variable dependiente:** confianza en el gobierno
+
+**Variable independiente:** malestar subjetivo
+
+**Variables de control:** edad, género, nivel educacional y nivel socioeconómico
+
+Para finalizar, este estudio busca aportar a la comprensión de los factores que inciden en la confianza en el gobierno en Chile, enfatizando el papel del malestar subjetivo en la configuración de la legitimidad institucional.
+
+```{r}
+library(haven)
+
+data <- read_dta("C:/Users/ASUS/Downloads/ELSOC_2022.dta")
+names(data)
+
+summary(data$conf_gob)
+mean(data$conf_gob, na.rm = TRUE)
+table(data$conf_gob)
+hist(data$conf_gob)
+
+modelo <- lm(conf_gob ~ edad + sexo + nivel_educ, data = data)
+summary(modelo)
+
+
+
+```
